@@ -1,14 +1,11 @@
-def fib_with_memo(n)
+def fib_with_memo(n, memo = [0,1])
   if n == 0 then return 0 end
   if n == 1 then return 1 end
+  if memo.length == n then return memo[-1] + memo[-2] end
 
-  fib_numbers = [0,1]
-  index = 2
-
-  while index < n
-    fib_numbers << fib_numbers[index-1] + fib_numbers[index-2]
-    index += 1
+  if memo.length < n
+    memo << memo[-1] + memo[-2]
   end
 
-  return fib_numbers[n-1] + fib_numbers[n-2]
+  fib_with_memo(n, memo)
 end

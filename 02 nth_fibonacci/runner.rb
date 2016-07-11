@@ -1,13 +1,24 @@
 require_relative "recursive_fib.rb"
 require_relative "fib_memo.rb"
+require 'benchmark'
 
-
-def benchmark
-  start_time = Time.now.to_f
-  yield
-  end_time = Time.now.to_f
-  end_time - start_time
+puts ''
+puts '15'
+Benchmark.bm do |x|
+  x.report('straight recursive:') { fib(15) }
+  x.report('with memo:         ') { fib_with_memo(15) }
 end
 
-puts "straight recursive: #{ benchmark { fib(40) } } seconds"
-puts "with memo: #{ benchmark {fib_with_memo(40)} } seconds "
+puts ''
+puts '35'
+Benchmark.bm do |x|
+  x.report('straight recursive:') { fib(35) }
+  x.report('with memo:         ') { fib_with_memo(35) }
+end
+
+puts ''
+puts '40'
+Benchmark.bm do |x|
+  x.report('straight recursive:') { fib(40) }
+  x.report('with memo:         ') { fib_with_memo(40) }
+end
