@@ -29,3 +29,7 @@ with memo:           0.000000   0.000000   0.000000 (  0.000017)
 straight recursive: 35.220000   0.000000  35.220000 ( 35.222465)
 with memo:           0.000000   0.000000   0.000000 (  0.000020)
 ```
+
+## 03) HTTP
+* a fun Pi and Twilio application using basic HTTP
+* User sends text to a Twilio number.  Twilio dispatches request to 'Middleman Server' (index.js).  Middleman Server sends request to Pi server.  Pi takes still picture using `raspistill` command.  Pi responds to request with id of photo.  Middleman Server sends response back to Twilio which includes URL of photo.  End user recieves photo as MMS.
