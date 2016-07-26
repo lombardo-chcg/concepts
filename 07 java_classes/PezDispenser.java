@@ -45,3 +45,5 @@ public class PezDispenser {
 // } catch(<Exception> <FreeVariable>) {
 //   FreeVariable.getMessage();
 // }
+
+// method signatures = same method name with different input
