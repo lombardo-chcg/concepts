@@ -1,9 +1,12 @@
 package com.lombardo;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Tweet implements Comparable, Serializable {
+public class Tweet implements Comparable<Tweet>, Serializable {
   private static final long serialVersionUID = 4568266612889551649L; //stamps the class to allow changes after serialization without breaking the program
 
   private String mAuthor;
@@ -22,8 +25,7 @@ public class Tweet implements Comparable, Serializable {
   }
 
   @Override
-  public int compareTo(Object obj)  {
-    Tweet other = (Tweet) obj;
+  public int compareTo(Tweet other) {
     if (equals(other)) {
       return 0;
     }
@@ -46,7 +48,27 @@ public class Tweet implements Comparable, Serializable {
     return mCreationDate;
   }
 
-  public String[] getWords() {
-    return mDescription.toLowerCase().split("[^\\w@#']+");
+  public List<String> getWords() {
+    String[] words = mDescription.toLowerCase().split("[^\\w@#']+");
+    return Arrays.asList(words);
   }
+
+  public List<String> getHashTags() {
+    return getWordsWithPrefix("#");
+  }
+
+  public List<String> getMentions() {
+    return getWordsWithPrefix("@");
+  }
+
+  private List<String> getWordsWithPrefix(String prefix) {
+    List<String> results = new ArrayList<String>();
+    for (String word : getWords()) {
+      if (word.startsWith(prefix)) {
+        results.add(word);
+      }
+    }
+    return results;
+  }
+
 }
