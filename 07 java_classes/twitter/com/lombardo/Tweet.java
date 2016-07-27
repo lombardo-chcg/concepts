@@ -1,8 +1,11 @@
 package com.lombardo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tweet {
+public class Tweet implements Comparable, Serializable {
+  private static final long serialVersionUID = 4568266612889551649L; //stamps the class to allow changes after serialization without breaking the program
+
   private String mAuthor;
   private String mDescription;
   private Date mCreationDate;
@@ -15,7 +18,20 @@ public class Tweet {
 
   @Override
   public String toString() {
-    return "Tweet: \"" + mDescription + "\" @" + mAuthor;
+    return String.format("Tweet: \"%s\" by %s on %s", mDescription, mAuthor, mCreationDate);
+  }
+
+  @Override
+  public int compareTo(Object obj)  {
+    Tweet other = (Tweet) obj;
+    if (equals(other)) {
+      return 0;
+    }
+    int dateComp = mCreationDate.compareTo(other.mCreationDate);
+    if (dateComp == 0) {
+      return mDescription.compareTo(other.mDescription);
+    }
+    return dateComp;
   }
 
   public String getAuthor() {
@@ -30,4 +46,7 @@ public class Tweet {
     return mCreationDate;
   }
 
+  public String[] getWords() {
+    return mDescription.toLowerCase().split("[^\\w@#']+");
+  }
 }
