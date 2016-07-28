@@ -60,8 +60,6 @@ public class Example {
     System.out.printf("Hash tags: %s %n", allHashTags);
     System.out.printf("Mentions: %s %n", allMentions);
     
-
-    // Hash Tag counts
     Map<String, Integer> hashTagCount = new HashMap<String, Integer>();
     for (Tweet t : tweets) {
       for (String hashTag : t.getHashTags()) {
@@ -74,9 +72,7 @@ public class Example {
       }
     }
    System.out.printf("Hash Tag counts: %s %n", hashTagCount);
-
-
-   // tweets by author
+    
    Map<String, List<Tweet>> tweetsByAuthor = new HashMap<String, List<Tweet>>();
    for (Tweet t : tweets ) {
     List<Tweet> authoredTweets = tweetsByAuthor.get(t.getAuthor());
@@ -86,7 +82,7 @@ public class Example {
     }
     authoredTweets.add(t);
    }
-   System.out.printf("tweets by author: %s %n", tweetsByAuthor);  
+   System.out.printf("FUCKING BULL SHIT MAN! %s %n", tweetsByAuthor);  
     
   }    
   
