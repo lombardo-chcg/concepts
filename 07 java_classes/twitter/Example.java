@@ -38,5 +38,9 @@ public class Example {
     for (Tweet t : reloadedTweets) {
       System.out.println(t);
     }
+
+    for (String hashtag : tweet.getHashTags()) {
+      System.out.println("Hashtag present: " + hashtag);
+    }
   }
 }
