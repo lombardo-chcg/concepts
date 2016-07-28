@@ -5,14 +5,12 @@ import com.lombardo.KaraokeMachine;
 public class Karaoke {
   
  public static void main(String[] args) {
-  Song song = new Song(
-    "Tame Impala",
-    "Less I Know the Better",
-    "https://www.youtube.com/watch?v=sBzrzS1Ag_g");
-   
   SongBook songBook = new SongBook();
+  songBook.importFrom("songs.txt");
   KaraokeMachine machine = new KaraokeMachine(songBook);
-  machine.run();   
+  machine.run();
+  System.out.println("Saving song book");
+  songBook.exportTo("songs.txt");                     
  }
 }
   
