@@ -1,13 +1,14 @@
-List
+List - general purpose
 * ArrayList
 * LinkedList
 
-Set
+Set - a list of unique elements
 * HashSet
 * TreeSet
 
-Map
+Map - key/value pairs
 * HashMap
 
-Queue
+Queue - fifo
+* ArrayDeque  (deque = double ended queue)
 
